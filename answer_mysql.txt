@@ -1,0 +1,5 @@
+ SELECT (client.id) idclient, amount 
+ FROM client
+ LEFT JOIN (SELECT SUM(amount) amount,
+ idclient FROM balance GROUP BY idclient) outResult 
+ ON client.id = outResult.idclient
